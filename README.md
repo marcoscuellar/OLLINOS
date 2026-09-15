@@ -81,7 +81,7 @@ Concise, confident, specific, human. Editorial black and volt. The system shows 
 
 | id | Section | What it does |
 |---|---|---|
-| — | Hero | "Stop the noise." + the example verified account card (four rows: why now, right person, right message, direct line — the last one **withheld**, because unverified) |
+| — | Hero | "Find the right account, the right person, and the reason to reach out now." + the example verified account card (four rows: why now, right person, right message, direct line — the last one **withheld**, because unverified) |
 | — | Four checks | Source found → cross-checked → live-confirmed → engine QA; a rail that fills on scroll |
 | `#why` | The haystack | Traditional sales intelligence vs ŌLLIN OS, side by side |
 | `#product` | Pillars | Verified Insights · Whole Account Mapping · It prepares, you decide |
