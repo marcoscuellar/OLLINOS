@@ -3,7 +3,7 @@
    hop, and it exists so the confirmation can honestly say "Received" instead of
    handing the visitor a mailto: and hoping they remember to hit send.
 
-   Env vars (Vercel → project maiz → Settings → Environment Variables):
+   Env vars (Vercel → the ŌLLIN OS site project → Settings → Environment Variables):
      RESEND_API_KEY  required — https://resend.com/api-keys
      CONTACT_TO      optional — defaults to marcos@ollinos.com
      CONTACT_FROM    optional — defaults to Resend's shared onboarding sender,

@@ -2,7 +2,7 @@
 
 **From:** Claude Code (session 3) · **To:** the next session · **Owner:** Marcos Cuellar (marcosmcuellar@gmail.com)
 **Date:** 2026-08-18
-**Repo:** `marcoscuellar/MAIZ` (repo name unchanged — renaming it would break the deploy) · **Branch:** `claude/maiz-gtm-strategy-qk9hh5`
+**Repo:** `marcoscuellar/OLLINOS` · **Branch:** `main`
 
 ---
 
@@ -19,7 +19,7 @@ What was done to the rebrand file before shipping (it failed the deploy gate as 
 
 Verified before shipping: gate PASS; Playwright at 390/768/1440 — no overflow, no JS errors, head meta present, pill stacks ≤520px; mocked 200 → Received state with the email in the line; mocked 500 → fallback + button re-enabled; invalid email → shake, no request.
 
-Still true from below: hard rules 1–9, the env-var notes in §1b, the booking link (`OLLIN_BOOKING_URL`) still unset, Google Workspace still blocked on Marcos. **Deploy is by pushing to `claude/maiz-gtm-strategy-qk9hh5`** — the `maiz` Vercel project is git-linked (that blocker from §1 is resolved).
+Still true from below: hard rules 1–9, the env-var notes in §1b, the booking link (`OLLIN_BOOKING_URL`) still unset, Google Workspace still blocked on Marcos. **Deploy is by merging to `main`** — the ŌLLIN OS site project on Vercel is git-linked (that blocker from §1 is resolved).
 
 ---
 
@@ -95,10 +95,10 @@ Rebuilt on Marcos's own words: *"I'd love to show you how the engines actually w
 **Nothing is live yet.** The Vercel MCP connector kept dropping out of the session and requires an OAuth authorization that a non-interactive session cannot complete. No Vercel CLI, no token, no `~/.vercel` credentials.
 
 Two ways through, pick either:
-- **Connect the repo (recommended, permanent):** Vercel → project `maiz` → Settings → Git → connect `marcoscuellar/MAIZ` (repo name unchanged — renaming it would break the deploy). Every push then auto-builds. Five commits are already waiting on the branch.
+- **Connect the repo (recommended, permanent):** Vercel → the ŌLLIN OS site project → Settings → Git → connect `marcoscuellar/OLLINOS`. Every push then auto-builds. Five commits are already waiting on the branch.
 - **Authorize the Vercel connector** in claude.ai connector settings, then a session can deploy directly.
 
-Project details: team `marcosmcuellar-3433s-projects` (`team_G7WBdov66WzlS910sSqwaJB9`), project `maiz` (`prj_hA9wYDj1a3D2BCKsReQJIQz4lMgb`). `maiz-ten.vercel.app` still serves the **old 57KB build**. Deploy `index.html` as-is — no build step, zero config.
+Project details: team `marcosmcuellar-3433s-projects` (`team_G7WBdov66WzlS910sSqwaJB9`), the ŌLLIN OS site project (`prj_hA9wYDj1a3D2BCKsReQJIQz4lMgb`). Deploy `index.html` as-is — no build step, zero config.
 
 Do **not** try to inline the 99KB page into `deploy_to_vercel` — retyping 1,452 lines verbatim risks silent corruption.
 
@@ -110,7 +110,7 @@ visitor. `OLLIN_FORM_ENDPOINT` is now set, so the confirmation says **Received**
 once the function returns 200; if it errors the page falls back to the direct address.
 
 **Until `RESEND_API_KEY` is set in Vercel, every submission fails visibly.** Set it at
-Vercel → project `maiz` → Settings → Environment Variables (all three environments),
+Vercel → the ŌLLIN OS site project → Settings → Environment Variables (all three environments),
 then redeploy. `CONTACT_TO` defaults to `marcos@ollinos.com` and `CONTACT_FROM` to
 Resend's shared `onboarding@resend.dev`, which **only delivers to the Resend account's
 own address** — verify `ollinos.com` in Resend and set `CONTACT_FROM` to lift that.
@@ -126,19 +126,19 @@ function answers 200 and sends nothing when it is filled.
 var OLLIN_BOOKING_URL = 'https://...';
 ```
 
-While empty, both fall back to jumping to `#book`. Marcos said the real link *"lives on another maiz brand"* — he still owes it. Also confirm the scheduler actually books **30** minutes, to match the copy.
+While empty, both fall back to jumping to `#book`. Marcos said the real link *"lives on another brand of his"* — he still owes it. Also confirm the scheduler actually books **30** minutes, to match the copy.
 
 ### 3. ⚠️ Verify the Forrester stat before production
 
 §01 footnote: *"4.3 hours a week … $14,200 per employee, per year. Forrester · via Tandem.ai."* Flagged **unverified** in the previous handoff and still unverified. It is a public claim with a named source. Confirm or cut it.
 
-### 4. getmaiz.com
+### 4. Legacy domain
 
-Marcos owns it (registered through Vercel, currently on project `ollincore`, redirecting to www). Move it to whichever project hosts this page. Reassigning a live domain is outward-facing — confirm with him first.
+A `.com` on the retired working name is still attached to the ŌLLIN OS site project. Remove it, or keep it only as a redirect to ollinos.com if old links must survive. Reassigning a live domain is outward-facing — confirm with Marcos first.
 
 ### 5. Google Workspace (still blocked on him)
 
-Signup says *"domain already in use."* Path A: `admin.google.com` with his gmail or a `*@getmaiz.com` address. Path B: the "here" link → domain-reclaim → TXT record in Vercel DNS.
+Signup says *"domain already in use."* Path A: `admin.google.com` with his gmail or a mailbox on the legacy domain. Path B: the "here" link → domain-reclaim → TXT record in Vercel DNS.
 **DNS gotcha he already hit:** for Google verification it is Name `@`/blank, Type **TXT**, Value the full `google-site-verification=...` string — *not* an A record. Gmail MX: Name blank, Type MX, `smtp.google.com`, priority 1.
 
 ---

@@ -22,7 +22,7 @@ A self-contained landing page for **ŌLLIN OS** — sales intelligence, verified
 - **ŌLLIN AI** — conversational front door / orchestrator
 - **ŌLLIN** — the intelligence-to-execution system (8 engines)
 
-> The product formerly carried the MAIZ name. It was retired from all visible branding; only infrastructure identifiers (the repo, the Vercel project, `getmaiz.com`) still use it, because renaming those would break the deploy.
+> An earlier working name was retired from all branding and infrastructure in 2026-09. If an old identifier surfaces anywhere, replace it — do not reintroduce it.
 - **Tracker** — connective tissue / shared record
 - **VAMOS** — puts prepared actions in front of the human
 
@@ -81,7 +81,7 @@ Concise, confident, specific, human. Editorial black and volt. The system shows 
 
 | id | Section | What it does |
 |---|---|---|
-| — | Hero | "Stop the noise." + the example verified account card (four rows: why now, right person, right message, direct line — the last one **withheld**, because unverified) |
+| — | Hero | "Find the right account, the right person, and the reason to reach out now." + the example verified account card (four rows: why now, right person, right message, direct line — the last one **withheld**, because unverified) |
 | — | Four checks | Source found → cross-checked → live-confirmed → engine QA; a rail that fills on scroll |
 | `#why` | The haystack | Traditional sales intelligence vs ŌLLIN OS, side by side |
 | `#product` | Pillars | Verified Insights · Whole Account Mapping · It prepares, you decide |
@@ -98,7 +98,7 @@ Every "book / meet / bring an account" link on the page points to `#run`.
 
 `#run` is a single centred signup pill, after the Motion UI *CTA: signup celebrate* pattern: one field (work email) and one button sharing a rounded pill. On submit it POSTs `{email, source:'ollin', website}` to **`/api/contact`** (`api/contact.js`, a zero-config Vercel Node function). The function sends through Resend to `CONTACT_TO` (default **`marcos@ollinos.com`**) with `reply_to` set to the visitor, and only then returns 200 — so the button morphing to **✓ Received** and the line *"Received. A person replies within one business day at …"* is honest. Any other outcome shows the direct address instead of failing silently. The `website` field is an off-screen honeypot.
 
-Env vars (Vercel → project `maiz` → Settings → Environment Variables): `RESEND_API_KEY` (required), `CONTACT_TO`, `CONTACT_FROM` — see the header comment in `api/contact.js`. The form script is a plain `<script>`, independent of the Motion module, so it works even if the CDN is blocked; Motion only adds the particle burst.
+Env vars (Vercel → the ŌLLIN OS site project → Settings → Environment Variables): `RESEND_API_KEY` (required), `CONTACT_TO`, `CONTACT_FROM` — see the header comment in `api/contact.js`. The form script is a plain `<script>`, independent of the Motion module, so it works even if the CDN is blocked; Motion only adds the particle burst.
 
 Three constants sit at the top of that script:
 
